@@ -89,7 +89,8 @@ def get_album_ids(album_names):
     for album_name in album_names:
         album_id = [album.id for album in albums if album.name == album_name]
         if not album_id:
-            sys.stderr.write("< No album named " + album_name + " ignoring > ")
+            sys.stderr.write("< No album named " + album_name + " adding > ")
+            album_ids.append(client.album.create(album_name).id)
         else:
             album_ids.append(album_id[0])
 
